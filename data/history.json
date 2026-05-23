@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "cheapestPrice": 5664000,
+    "currency": "VND",
+    "engine": "serpapi",
+    "route": "SGN-CAN",
+    "carrierName": "Vietjet",
+    "timestamp": "23/05 23:50"
+  }
+]

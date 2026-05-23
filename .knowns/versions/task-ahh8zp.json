@@ -1,6 +1,6 @@
 {
   "taskId": "ahh8zp",
-  "currentVersion": 1,
+  "currentVersion": 3,
   "versions": [
     {
       "id": "v1",
@@ -23,6 +23,44 @@
         "description": "End-to-end verify price scanning, Telegram notifications, cron rescheduling, and user interface responsiveness.",
         "priority": "medium",
         "status": "todo",
+        "title": "Verify mock/live integration and finalize validation"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "ahh8zp",
+      "version": 2,
+      "timestamp": "2026-05-23T16:49:26.584505Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        }
+      ],
+      "snapshot": {
+        "description": "End-to-end verify price scanning, Telegram notifications, cron rescheduling, and user interface responsiveness.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Verify mock/live integration and finalize validation"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "ahh8zp",
+      "version": 3,
+      "timestamp": "2026-05-23T16:50:42.83465Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "description": "End-to-end verify price scanning, Telegram notifications, cron rescheduling, and user interface responsiveness.",
+        "priority": "medium",
+        "status": "done",
         "title": "Verify mock/live integration and finalize validation"
       }
     }
