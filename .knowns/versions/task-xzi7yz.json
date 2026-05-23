@@ -1,0 +1,89 @@
+{
+  "taskId": "xzi7yz",
+  "currentVersion": 4,
+  "versions": [
+    {
+      "id": "v1",
+      "taskId": "xzi7yz",
+      "version": 1,
+      "timestamp": "2026-05-23T16:58:36.024216Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": null,
+          "newValue": "todo"
+        },
+        {
+          "field": "priority",
+          "oldValue": null,
+          "newValue": "medium"
+        }
+      ],
+      "snapshot": {
+        "description": "Parse and display dates in the Route \u0026 Dates stats card as a human-friendly range in a glowing badge.",
+        "priority": "medium",
+        "status": "todo",
+        "title": "Display properly formatted and highlighted dates in StatsGrid"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "xzi7yz",
+      "version": 2,
+      "timestamp": "2026-05-23T16:58:38.293356Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        }
+      ],
+      "snapshot": {
+        "description": "Parse and display dates in the Route \u0026 Dates stats card as a human-friendly range in a glowing badge.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Display properly formatted and highlighted dates in StatsGrid"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "xzi7yz",
+      "version": 3,
+      "timestamp": "2026-05-23T16:58:44.320174Z",
+      "changes": [
+        {
+          "field": "implementationPlan",
+          "oldValue": null,
+          "newValue": "1. Implement formatTravelDates inside src/components/StatsGrid.tsx.\n2. Render the date range as a glowing, frosted indigo badge.\n3. Build and verify."
+        }
+      ],
+      "snapshot": {
+        "description": "Parse and display dates in the Route \u0026 Dates stats card as a human-friendly range in a glowing badge.",
+        "implementationPlan": "1. Implement formatTravelDates inside src/components/StatsGrid.tsx.\n2. Render the date range as a glowing, frosted indigo badge.\n3. Build and verify.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Display properly formatted and highlighted dates in StatsGrid"
+      }
+    },
+    {
+      "id": "v4",
+      "taskId": "xzi7yz",
+      "version": 4,
+      "timestamp": "2026-05-23T16:59:26.881112Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "description": "Parse and display dates in the Route \u0026 Dates stats card as a human-friendly range in a glowing badge.",
+        "implementationPlan": "1. Implement formatTravelDates inside src/components/StatsGrid.tsx.\n2. Render the date range as a glowing, frosted indigo badge.\n3. Build and verify.",
+        "priority": "medium",
+        "status": "done",
+        "title": "Display properly formatted and highlighted dates in StatsGrid"
+      }
+    }
+  ]
+}

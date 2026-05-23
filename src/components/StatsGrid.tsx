@@ -8,6 +8,31 @@ import { Settings } from '@/services/schemas';
 import { HistoryPoint } from '@/services/historyDb';
 import { getFriendlyCronText } from '@/services/cronFormatter';
 
+function formatTravelDates(depStr: string, retStr: string): string {
+  try {
+    const dep = new Date(depStr);
+    const ret = new Date(retStr);
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    
+    const depDay = dep.getDate();
+    const depMonth = months[dep.getMonth()];
+    
+    const retDay = ret.getDate();
+    const retMonth = months[ret.getMonth()];
+    const retYear = ret.getFullYear();
+
+    if (dep.getFullYear() !== ret.getFullYear()) {
+      return `${depMonth} ${depDay}, ${dep.getFullYear()} ⇄ ${retMonth} ${retDay}, ${retYear}`;
+    }
+    if (dep.getMonth() === ret.getMonth()) {
+      return `${depMonth} ${depDay} ⇄ ${retDay}, ${retYear}`;
+    }
+    return `${depMonth} ${depDay} ⇄ ${retMonth} ${retDay}, ${retYear}`;
+  } catch {
+    return `${depStr} to ${retStr}`;
+  }
+}
+
 interface StatsGridProps {
   settings: Settings;
   history: HistoryPoint[];
@@ -89,16 +114,16 @@ export default function StatsGrid({ settings, history, cheapestPrice }: StatsGri
         <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-emerald-400 rounded-full m-3 pulse-indicator" />
         <CardContent className="p-5 flex flex-row items-center justify-between">
           <div>
-            <p className="text-[10px] text-indigo-300 font-extrabold uppercase tracking-widest">Core Route Tracked</p>
+            <p className="text-[10px] text-indigo-300 font-extrabold uppercase tracking-widest">Flight Route & Dates</p>
             <h3 className="text-2xl font-black mt-1 text-gray-100 flex items-center gap-2">
               {settings.origin} 
               <Plane className="w-5 h-5 text-indigo-400 rotate-90 animate-pulse" /> 
               {settings.destination}
             </h3>
-            <p className="text-xs text-gray-300 mt-2.5 font-bold flex items-center gap-1">
+            <div className="inline-flex items-center gap-1.5 mt-3.5 px-3 py-1.5 bg-indigo-500/10 border border-indigo-500/25 rounded-xl text-xs font-bold text-indigo-300 w-fit shadow-md">
               <Calendar className="w-3.5 h-3.5 text-indigo-400" />
-              {settings.outboundDate} to {settings.returnDate}
-            </p>
+              {formatTravelDates(settings.outboundDate, settings.returnDate)}
+            </div>
           </div>
           <div className="w-12 h-12 bg-indigo-500/15 rounded-xl flex items-center justify-center text-indigo-400 shadow-inner">
             <Plane className="w-6 h-6 rotate-45" />
