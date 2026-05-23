@@ -1,0 +1,89 @@
+{
+  "taskId": "f7mfxl",
+  "currentVersion": 4,
+  "versions": [
+    {
+      "id": "v1",
+      "taskId": "f7mfxl",
+      "version": 1,
+      "timestamp": "2026-05-23T16:54:17.259713Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": null,
+          "newValue": "todo"
+        },
+        {
+          "field": "priority",
+          "oldValue": null,
+          "newValue": "medium"
+        }
+      ],
+      "snapshot": {
+        "description": "Hide the Active Search Engine stats card from the main dashboard and remove the engine selection option from the settings control panel.",
+        "priority": "medium",
+        "status": "todo",
+        "title": "Hide Active Search Engine from Dashboard and Settings"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "f7mfxl",
+      "version": 2,
+      "timestamp": "2026-05-23T16:54:19.908027Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        }
+      ],
+      "snapshot": {
+        "description": "Hide the Active Search Engine stats card from the main dashboard and remove the engine selection option from the settings control panel.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Hide Active Search Engine from Dashboard and Settings"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "f7mfxl",
+      "version": 3,
+      "timestamp": "2026-05-23T16:54:28.642657Z",
+      "changes": [
+        {
+          "field": "implementationPlan",
+          "oldValue": null,
+          "newValue": "1. Modify src/components/StatsGrid.tsx to remove search engine card and change grid to 3 columns.\n2. Modify src/components/SettingsForm.tsx to remove engine select and Amadeus warnings.\n3. Modify src/app/settings/actions.ts to hardcode serpapi engine.\n4. Build and verify."
+        }
+      ],
+      "snapshot": {
+        "description": "Hide the Active Search Engine stats card from the main dashboard and remove the engine selection option from the settings control panel.",
+        "implementationPlan": "1. Modify src/components/StatsGrid.tsx to remove search engine card and change grid to 3 columns.\n2. Modify src/components/SettingsForm.tsx to remove engine select and Amadeus warnings.\n3. Modify src/app/settings/actions.ts to hardcode serpapi engine.\n4. Build and verify.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Hide Active Search Engine from Dashboard and Settings"
+      }
+    },
+    {
+      "id": "v4",
+      "taskId": "f7mfxl",
+      "version": 4,
+      "timestamp": "2026-05-23T16:55:34.046198Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "description": "Hide the Active Search Engine stats card from the main dashboard and remove the engine selection option from the settings control panel.",
+        "implementationPlan": "1. Modify src/components/StatsGrid.tsx to remove search engine card and change grid to 3 columns.\n2. Modify src/components/SettingsForm.tsx to remove engine select and Amadeus warnings.\n3. Modify src/app/settings/actions.ts to hardcode serpapi engine.\n4. Build and verify.",
+        "priority": "medium",
+        "status": "done",
+        "title": "Hide Active Search Engine from Dashboard and Settings"
+      }
+    }
+  ]
+}

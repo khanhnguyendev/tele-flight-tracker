@@ -11,7 +11,7 @@ export async function saveSettingsAction(formData: FormData) {
     outboundDate: formData.get('outboundDate') as string || '',
     returnDate: formData.get('returnDate') as string || '',
     currency: (formData.get('currency') as string || 'VND').trim().toUpperCase(),
-    engine: formData.get('engine') as string || 'serpapi',
+    engine: 'serpapi',
     cron: formData.get('cron') as string || '0 */6 * * *'
   };
 

@@ -47,7 +47,7 @@ export default function StatsGrid({ settings, history, cheapestPrice }: StatsGri
     : 'No Data';
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       {/* 1. Cheapest Price Card */}
       <Card className="glass-card">
         <CardContent className="p-5 flex flex-row items-center justify-between">
@@ -98,25 +98,6 @@ export default function StatsGrid({ settings, history, cheapestPrice }: StatsGri
           </div>
           <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-400">
             <Plane className="w-6 h-6" />
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* 3. API Engine & Currency Card */}
-      <Card className="glass-card">
-        <CardContent className="p-5 flex flex-row items-center justify-between">
-          <div>
-            <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">Active Search Engine</p>
-            <h3 className="text-lg font-bold mt-1 text-indigo-400 uppercase tracking-wide">
-              {settings.engine} {settings.engine === 'serpapi' && <span className="text-[10px] bg-indigo-500/20 text-indigo-300 px-1.5 py-0.5 rounded ml-1">REC</span>}
-            </h3>
-            <p className="text-xs text-gray-400 mt-2 font-medium flex items-center gap-1">
-              <Cpu className="w-3.5 h-3.5 text-emerald-400" />
-              Currency: <b>{settings.currency}</b>
-            </p>
-          </div>
-          <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-400">
-            <Cpu className="w-6 h-6" />
           </div>
         </CardContent>
       </Card>

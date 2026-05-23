@@ -18,11 +18,6 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
   const [scanning, setScanning] = useState(false);
   const [scanMessage, setScanMessage] = useState<string | null>(null);
 
-  const now = new Date();
-  const amadeusSunsetDate = new Date('2026-07-17T00:00:00Z');
-  const showAmadeusWarning = form.engine === 'amadeus';
-  const isAmadeusSunsetted = showAmadeusWarning && now >= amadeusSunsetDate;
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm(prev => ({
@@ -52,9 +47,7 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
         throw new Error('Return Date must be on or after Outbound Date.');
       }
 
-      if (validated.engine === 'amadeus' && now >= amadeusSunsetDate) {
-        throw new Error('Amadeus API has been sunsetted and cannot be used.');
-      }
+
 
       // 2. Submit via Server Action Form submission helper
       const formData = new FormData();
@@ -95,26 +88,7 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
   return (
     <div className="space-y-6">
       
-      {/* Dynamic Warning Alert for Amadeus Sunset */}
-      {showAmadeusWarning && (
-        <div className={`p-4 rounded-2xl flex items-start gap-3 border ${
-          isAmadeusSunsetted 
-            ? 'bg-rose-500/10 border-rose-500/20 text-rose-300' 
-            : 'bg-amber-500/10 border-amber-500/20 text-amber-300'
-        }`}>
-          <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-          <div>
-            <h5 className="font-bold text-sm">
-              {isAmadeusSunsetted ? '⚠️ Engine Sunset Alert (Disabled)' : '⚠️ Sunset Warning'}
-            </h5>
-            <p className="text-xs mt-1 leading-relaxed">
-              {isAmadeusSunsetted 
-                ? 'Amadeus GDS API has been sunsetted as of July 17, 2026. This engine is disabled. Please configure SerpApi (recommended) or Travelpayouts.' 
-                : 'Amadeus GDS is sunsetting on July 17, 2026. Avoid setting up new active dependencies on this query provider.'}
-            </p>
-          </div>
-        </div>
-      )}
+
 
       {/* Error alert */}
       {error && (
@@ -201,39 +175,20 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
               </div>
             </div>
 
-            {/* Row 3: Engine & Currency */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-xs text-gray-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
-                  <Cpu className="w-3.5 h-3.5 text-emerald-400" /> Search Engine Engine
-                </label>
-                <select 
-                  name="engine" 
-                  value={form.engine}
-                  onChange={handleInputChange}
-                  className="w-full bg-slate-900/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-100 focus:outline-none focus:border-emerald-500 transition-all cursor-pointer font-bold uppercase tracking-wider"
-                >
-                  <option value="serpapi">SerpApi (Google Flights) [REC]</option>
-                  <option value="travelpayouts">Travelpayouts (Aviasales)</option>
-                  <option value="mock">Mock Simulator</option>
-                  <option value="amadeus" disabled={isAmadeusSunsetted}>Amadeus GDS (Sunset)</option>
-                </select>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs text-gray-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
-                  <Cpu className="w-3.5 h-3.5 text-emerald-400" /> Currency Symbol
-                </label>
-                <input 
-                  type="text" 
-                  name="currency" 
-                  value={form.currency}
-                  onChange={handleInputChange}
-                  placeholder="e.g. VND"
-                  required
-                  className="w-full bg-slate-900/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-all font-mono uppercase font-bold"
-                />
-              </div>
+            {/* Row 3: Currency Symbol */}
+            <div className="space-y-2">
+              <label className="text-xs text-gray-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                <Cpu className="w-3.5 h-3.5 text-emerald-400" /> Currency Symbol
+              </label>
+              <input 
+                type="text" 
+                name="currency" 
+                value={form.currency}
+                onChange={handleInputChange}
+                placeholder="e.g. VND"
+                required
+                className="w-full bg-slate-900/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-all font-mono uppercase font-bold"
+              />
             </div>
 
             {/* Row 4: Background Cron */}
