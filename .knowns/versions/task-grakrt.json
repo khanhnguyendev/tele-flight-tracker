@@ -1,6 +1,6 @@
 {
   "taskId": "grakrt",
-  "currentVersion": 1,
+  "currentVersion": 3,
   "versions": [
     {
       "id": "v1",
@@ -23,6 +23,44 @@
         "description": "Create periodic scanner route src/app/api/scan/route.ts and dynamic scheduler running node-cron intervals.",
         "priority": "medium",
         "status": "todo",
+        "title": "Implement background scan router and dynamic cron scheduler"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "grakrt",
+      "version": 2,
+      "timestamp": "2026-05-23T16:45:27.527511Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        }
+      ],
+      "snapshot": {
+        "description": "Create periodic scanner route src/app/api/scan/route.ts and dynamic scheduler running node-cron intervals.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Implement background scan router and dynamic cron scheduler"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "grakrt",
+      "version": 3,
+      "timestamp": "2026-05-23T16:45:46.569808Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "description": "Create periodic scanner route src/app/api/scan/route.ts and dynamic scheduler running node-cron intervals.",
+        "priority": "medium",
+        "status": "done",
         "title": "Implement background scan router and dynamic cron scheduler"
       }
     }
