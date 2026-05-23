@@ -33,6 +33,47 @@ function formatTravelDates(depStr: string, retStr: string): string {
   }
 }
 
+function parseLocalDate(dateStr: string) {
+  try {
+    const parts = dateStr.split('-');
+    if (parts.length !== 3) return null;
+    const year = parseInt(parts[0], 10);
+    const monthIndex = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return {
+      year,
+      month: months[monthIndex],
+      day
+    };
+  } catch {
+    return null;
+  }
+}
+
+function formatSingleDateShort(dateStr: string): string {
+  const parsed = parseLocalDate(dateStr);
+  if (!parsed) return dateStr;
+  return `${parsed.month} ${parsed.day}`;
+}
+
+function getYearOfDate(dateStr: string): string {
+  const parsed = parseLocalDate(dateStr);
+  if (!parsed) return '';
+  return String(parsed.year);
+}
+
+function calculateDurationDays(depStr: string, retStr: string): number {
+  try {
+    const dep = new Date(`${depStr}T00:00:00Z`);
+    const ret = new Date(`${retStr}T00:00:00Z`);
+    const diffMs = ret.getTime() - dep.getTime();
+    return Math.max(1, Math.ceil(diffMs / (24 * 3600 * 1000)));
+  } catch {
+    return 0;
+  }
+}
+
 interface StatsGridProps {
   settings: Settings;
   history: HistoryPoint[];
@@ -113,20 +154,44 @@ export default function StatsGrid({ settings, history, cheapestPrice }: StatsGri
       <Card className="glass-card border-indigo-500/25 hover:border-indigo-400/50 shadow-lg shadow-indigo-500/5 bg-gradient-to-br from-indigo-950/20 to-slate-950/50 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-emerald-400 rounded-full m-3 pulse-indicator" />
         <CardContent className="p-5 flex flex-row items-center justify-between">
-          <div>
+          <div className="w-full">
             <p className="text-[10px] text-indigo-300 font-extrabold uppercase tracking-widest">Flight Route & Dates</p>
             <h3 className="text-2xl font-black mt-1 text-gray-100 flex items-center gap-2">
               {settings.origin} 
               <Plane className="w-5 h-5 text-indigo-400 rotate-90 animate-pulse" /> 
               {settings.destination}
             </h3>
-            <div className="inline-flex items-center gap-1.5 mt-3.5 px-3 py-1.5 bg-indigo-500/10 border border-indigo-500/25 rounded-xl text-xs font-bold text-indigo-300 w-fit shadow-md">
-              <Calendar className="w-3.5 h-3.5 text-indigo-400" />
-              {formatTravelDates(settings.outboundDate, settings.returnDate)}
+            
+            {/* Redesigned Premium Dates display sections */}
+            <div className="grid grid-cols-3 gap-2 mt-4 bg-slate-950/50 border border-indigo-500/15 rounded-xl p-2.5 shadow-inner">
+              <div className="flex flex-col items-center justify-center text-center p-1 bg-slate-900/40 rounded-lg border border-white/5">
+                <span className="text-[8px] text-indigo-400 font-extrabold uppercase tracking-widest">Outbound</span>
+                <span className="text-[11px] font-black text-gray-100 mt-1 whitespace-nowrap">
+                  {formatSingleDateShort(settings.outboundDate)}
+                </span>
+                <span className="text-[8px] text-gray-500 font-bold mt-0.5">
+                  {getYearOfDate(settings.outboundDate)}
+                </span>
+              </div>
+              
+              <div className="flex flex-col items-center justify-center text-center p-1 bg-slate-900/40 rounded-lg border border-white/5">
+                <span className="text-[8px] text-indigo-400 font-extrabold uppercase tracking-widest">Return</span>
+                <span className="text-[11px] font-black text-gray-100 mt-1 whitespace-nowrap">
+                  {formatSingleDateShort(settings.returnDate)}
+                </span>
+                <span className="text-[8px] text-gray-500 font-bold mt-0.5">
+                  {getYearOfDate(settings.returnDate)}
+                </span>
+              </div>
+              
+              <div className="flex flex-col items-center justify-center text-center p-1 bg-indigo-500/10 rounded-lg border border-indigo-500/20">
+                <span className="text-[8px] text-emerald-400 font-extrabold uppercase tracking-widest">Trip length</span>
+                <span className="text-[11px] font-black text-emerald-400 mt-1">
+                  {calculateDurationDays(settings.outboundDate, settings.returnDate)} Days
+                </span>
+                <span className="text-[8px] text-indigo-300 font-bold mt-0.5 uppercase tracking-wide">Round-Trip</span>
+              </div>
             </div>
-          </div>
-          <div className="w-12 h-12 bg-indigo-500/15 rounded-xl flex items-center justify-center text-indigo-400 shadow-inner">
-            <Plane className="w-6 h-6 rotate-45" />
           </div>
         </CardContent>
       </Card>

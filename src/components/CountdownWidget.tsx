@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useCountdown } from '@/hooks/useCountdown';
 import { PlaneTakeoff } from 'lucide-react';
 
@@ -8,7 +9,32 @@ interface CountdownWidgetProps {
 }
 
 export default function CountdownWidget({ targetDateStr }: CountdownWidgetProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const { days, hours, minutes, seconds, isExpired } = useCountdown(targetDateStr);
+
+  if (!mounted) {
+    return (
+      <div className="flex items-center gap-2 bg-slate-950/40 border border-white/10 backdrop-blur-md rounded-2xl p-2.5 shadow-xl opacity-50">
+        <div className="hidden sm:flex items-center justify-center w-10 h-10 bg-emerald-500/10 text-emerald-400 rounded-xl mr-1">
+          <PlaneTakeoff className="w-5 h-5" />
+        </div>
+        <div className="flex items-center gap-1.5">
+          <div className="bg-slate-900/60 border border-white/5 w-14 h-14 md:w-16 md:h-16 rounded-xl animate-pulse" />
+          <span className="text-gray-600 font-bold text-lg">:</span>
+          <div className="bg-slate-900/60 border border-white/5 w-14 h-14 md:w-16 md:h-16 rounded-xl animate-pulse" />
+          <span className="text-gray-600 font-bold text-lg">:</span>
+          <div className="bg-slate-900/60 border border-white/5 w-14 h-14 md:w-16 md:h-16 rounded-xl animate-pulse" />
+          <span className="text-gray-600 font-bold text-lg">:</span>
+          <div className="bg-slate-900/60 border border-white/5 w-14 h-14 md:w-16 md:h-16 rounded-xl animate-pulse" />
+        </div>
+      </div>
+    );
+  }
 
   if (isExpired) {
     return (
