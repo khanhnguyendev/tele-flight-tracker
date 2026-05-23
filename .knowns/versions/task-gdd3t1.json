@@ -1,6 +1,6 @@
 {
   "taskId": "gdd3t1",
-  "currentVersion": 1,
+  "currentVersion": 3,
   "versions": [
     {
       "id": "v1",
@@ -23,6 +23,44 @@
         "description": "Create src/app/api/telegram/route.ts endpoint handling chat commands /status, /scannow, /setorigin, /setdest, /setdates, /setinterval, /help.",
         "priority": "high",
         "status": "todo",
+        "title": "Implement Telegram Bot webhook and conversational command handler"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "gdd3t1",
+      "version": 2,
+      "timestamp": "2026-05-23T16:44:57.446479Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        }
+      ],
+      "snapshot": {
+        "description": "Create src/app/api/telegram/route.ts endpoint handling chat commands /status, /scannow, /setorigin, /setdest, /setdates, /setinterval, /help.",
+        "priority": "high",
+        "status": "in-progress",
+        "title": "Implement Telegram Bot webhook and conversational command handler"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "gdd3t1",
+      "version": 3,
+      "timestamp": "2026-05-23T16:45:23.486461Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "description": "Create src/app/api/telegram/route.ts endpoint handling chat commands /status, /scannow, /setorigin, /setdest, /setdates, /setinterval, /help.",
+        "priority": "high",
+        "status": "done",
         "title": "Implement Telegram Bot webhook and conversational command handler"
       }
     }

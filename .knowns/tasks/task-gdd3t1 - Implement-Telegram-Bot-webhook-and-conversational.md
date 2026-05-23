@@ -1,12 +1,12 @@
 ---
 id: gdd3t1
 title: Implement Telegram Bot webhook and conversational command handler
-status: todo
+status: done
 priority: high
 labels: []
 createdAt: '2026-05-23T16:15:41.918Z'
-updatedAt: '2026-05-23T16:15:41.918Z'
-timeSpent: 0
+updatedAt: '2026-05-23T16:45:23.484Z'
+timeSpent: 26
 parent: qbpiqp
 ---
 # Implement Telegram Bot webhook and conversational command handler
