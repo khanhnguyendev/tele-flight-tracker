@@ -1,12 +1,12 @@
 ---
 id: vamol5
 title: Implement unified flight query engines (SerpApi, Travelpayouts, mock, Amadeus)
-status: todo
+status: done
 priority: high
 labels: []
 createdAt: '2026-05-23T16:15:39.134Z'
-updatedAt: '2026-05-23T16:15:39.134Z'
-timeSpent: 0
+updatedAt: '2026-05-23T16:44:32.935Z'
+timeSpent: 39
 parent: qbpiqp
 ---
 # Implement unified flight query engines (SerpApi, Travelpayouts, mock, Amadeus)

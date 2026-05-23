@@ -1,6 +1,6 @@
 {
   "taskId": "vamol5",
-  "currentVersion": 1,
+  "currentVersion": 3,
   "versions": [
     {
       "id": "v1",
@@ -23,6 +23,44 @@
         "description": "Create services for SerpApi, Travelpayouts, mock, and Amadeus flight search with normalized schemas and Amadeus sunsetting checks.",
         "priority": "high",
         "status": "todo",
+        "title": "Implement unified flight query engines (SerpApi, Travelpayouts, mock, Amadeus)"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "vamol5",
+      "version": 2,
+      "timestamp": "2026-05-23T16:43:53.417876Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        }
+      ],
+      "snapshot": {
+        "description": "Create services for SerpApi, Travelpayouts, mock, and Amadeus flight search with normalized schemas and Amadeus sunsetting checks.",
+        "priority": "high",
+        "status": "in-progress",
+        "title": "Implement unified flight query engines (SerpApi, Travelpayouts, mock, Amadeus)"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "vamol5",
+      "version": 3,
+      "timestamp": "2026-05-23T16:44:32.936963Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "description": "Create services for SerpApi, Travelpayouts, mock, and Amadeus flight search with normalized schemas and Amadeus sunsetting checks.",
+        "priority": "high",
+        "status": "done",
         "title": "Implement unified flight query engines (SerpApi, Travelpayouts, mock, Amadeus)"
       }
     }
