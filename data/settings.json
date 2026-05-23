@@ -1,0 +1,9 @@
+{
+  "origin": "SGN",
+  "destination": "CAN",
+  "outboundDate": "2026-08-28",
+  "returnDate": "2026-09-02",
+  "currency": "VND",
+  "engine": "serpapi",
+  "cron": "0 */6 * * *"
+}

@@ -1,0 +1,47 @@
+{
+  "name": "tele-flight-tracker",
+  "id": "tele-flight-tracker",
+  "createdAt": "2026-05-23T16:12:54.899974Z",
+  "settings": {
+    "defaultPriority": "medium",
+    "gitTrackingMode": "git-tracked",
+    "statuses": [
+      "todo",
+      "in-progress",
+      "in-review",
+      "done",
+      "blocked",
+      "on-hold",
+      "urgent"
+    ],
+    "statusColors": {
+      "blocked": "red",
+      "done": "green",
+      "in-progress": "blue",
+      "in-review": "purple",
+      "on-hold": "yellow",
+      "todo": "gray",
+      "urgent": "orange"
+    },
+    "visibleColumns": [
+      "todo",
+      "in-progress",
+      "blocked",
+      "done",
+      "in-review"
+    ],
+    "semanticSearch": {
+      "enabled": true,
+      "model": "bge-base-en-v1.5",
+      "huggingFaceId": "Xenova/bge-base-en-v1.5",
+      "dimensions": 768,
+      "maxTokens": 512
+    },
+    "platforms": [
+      "claude-code",
+      "opencode",
+      "agents"
+    ],
+    "enableChatUI": true
+  }
+}

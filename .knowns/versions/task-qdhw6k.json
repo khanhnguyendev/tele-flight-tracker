@@ -1,0 +1,68 @@
+{
+  "taskId": "qdhw6k",
+  "currentVersion": 3,
+  "versions": [
+    {
+      "id": "v1",
+      "taskId": "qdhw6k",
+      "version": 1,
+      "timestamp": "2026-05-23T16:15:37.686803Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": null,
+          "newValue": "todo"
+        },
+        {
+          "field": "priority",
+          "oldValue": null,
+          "newValue": "medium"
+        }
+      ],
+      "snapshot": {
+        "description": "Create src/services/settingsDb.ts and historyDb.ts to read/write JSON files for settings and scan history.",
+        "priority": "medium",
+        "status": "todo",
+        "title": "Implement file-based settings and history database services"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "qdhw6k",
+      "version": 2,
+      "timestamp": "2026-05-23T16:42:56.800135Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        }
+      ],
+      "snapshot": {
+        "description": "Create src/services/settingsDb.ts and historyDb.ts to read/write JSON files for settings and scan history.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Implement file-based settings and history database services"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "qdhw6k",
+      "version": 3,
+      "timestamp": "2026-05-23T16:43:41.868172Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "description": "Create src/services/settingsDb.ts and historyDb.ts to read/write JSON files for settings and scan history.",
+        "priority": "medium",
+        "status": "done",
+        "title": "Implement file-based settings and history database services"
+      }
+    }
+  ]
+}
