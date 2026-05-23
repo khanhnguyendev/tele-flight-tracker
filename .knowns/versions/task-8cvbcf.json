@@ -1,6 +1,6 @@
 {
   "taskId": "8cvbcf",
-  "currentVersion": 1,
+  "currentVersion": 3,
   "versions": [
     {
       "id": "v1",
@@ -23,6 +23,44 @@
         "description": "Create settings page and form using HeroUI and Zod validations to save parameters and trigger scans.",
         "priority": "medium",
         "status": "todo",
+        "title": "Build interactive settings control panel and validation"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "8cvbcf",
+      "version": 2,
+      "timestamp": "2026-05-23T16:48:33.582207Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        }
+      ],
+      "snapshot": {
+        "description": "Create settings page and form using HeroUI and Zod validations to save parameters and trigger scans.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Build interactive settings control panel and validation"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "8cvbcf",
+      "version": 3,
+      "timestamp": "2026-05-23T16:49:21.008069Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "description": "Create settings page and form using HeroUI and Zod validations to save parameters and trigger scans.",
+        "priority": "medium",
+        "status": "done",
         "title": "Build interactive settings control panel and validation"
       }
     }
