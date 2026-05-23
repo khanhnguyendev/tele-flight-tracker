@@ -1,0 +1,89 @@
+{
+  "taskId": "9whrul",
+  "currentVersion": 4,
+  "versions": [
+    {
+      "id": "v1",
+      "taskId": "9whrul",
+      "version": 1,
+      "timestamp": "2026-05-23T16:55:39.386303Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": null,
+          "newValue": "todo"
+        },
+        {
+          "field": "priority",
+          "oldValue": null,
+          "newValue": "medium"
+        }
+      ],
+      "snapshot": {
+        "description": "Format the background track cron expression as a human-friendly timer on the stats grid and settings panel with live preview.",
+        "priority": "medium",
+        "status": "todo",
+        "title": "Display friendly scanning schedule timer instead of cron expression"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "9whrul",
+      "version": 2,
+      "timestamp": "2026-05-23T16:55:42.15311Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        }
+      ],
+      "snapshot": {
+        "description": "Format the background track cron expression as a human-friendly timer on the stats grid and settings panel with live preview.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Display friendly scanning schedule timer instead of cron expression"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "9whrul",
+      "version": 3,
+      "timestamp": "2026-05-23T16:55:48.506278Z",
+      "changes": [
+        {
+          "field": "implementationPlan",
+          "oldValue": null,
+          "newValue": "1. Create src/services/cronFormatter.ts to format cron expressions.\n2. Modify src/components/StatsGrid.tsx to display friendly schedule.\n3. Modify src/components/SettingsForm.tsx to show live parsed preview.\n4. Build and verify."
+        }
+      ],
+      "snapshot": {
+        "description": "Format the background track cron expression as a human-friendly timer on the stats grid and settings panel with live preview.",
+        "implementationPlan": "1. Create src/services/cronFormatter.ts to format cron expressions.\n2. Modify src/components/StatsGrid.tsx to display friendly schedule.\n3. Modify src/components/SettingsForm.tsx to show live parsed preview.\n4. Build and verify.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Display friendly scanning schedule timer instead of cron expression"
+      }
+    },
+    {
+      "id": "v4",
+      "taskId": "9whrul",
+      "version": 4,
+      "timestamp": "2026-05-23T16:56:46.450308Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "description": "Format the background track cron expression as a human-friendly timer on the stats grid and settings panel with live preview.",
+        "implementationPlan": "1. Create src/services/cronFormatter.ts to format cron expressions.\n2. Modify src/components/StatsGrid.tsx to display friendly schedule.\n3. Modify src/components/SettingsForm.tsx to show live parsed preview.\n4. Build and verify.",
+        "priority": "medium",
+        "status": "done",
+        "title": "Display friendly scanning schedule timer instead of cron expression"
+      }
+    }
+  ]
+}

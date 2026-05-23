@@ -6,6 +6,7 @@ import { Card, CardContent, Spinner } from '@heroui/react';
 import { Plane, Calendar, Cpu, Bell, Sliders, ArrowLeft, Save, AlertTriangle, RefreshCw } from 'lucide-react';
 import { Settings, SettingsSchema } from '@/services/schemas';
 import { saveSettingsAction } from '@/app/settings/actions';
+import { getFriendlyCronText } from '@/services/cronFormatter';
 
 interface SettingsFormProps {
   initialSettings: Settings;
@@ -193,8 +194,13 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
 
             {/* Row 4: Background Cron */}
             <div className="space-y-2">
-              <label className="text-xs text-gray-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
-                <Bell className="w-3.5 h-3.5 text-emerald-400" /> Background Track Interval (Cron Schedule)
+              <label className="text-xs text-gray-400 font-bold uppercase tracking-wider block">
+                <span className="flex items-center gap-1.5 mb-1">
+                  <Bell className="w-3.5 h-3.5 text-emerald-400" /> Background Track Interval
+                </span>
+                <span className="text-[10px] text-gray-500 font-semibold lowercase normal-case tracking-normal block mt-1">
+                  Parsed: <span className="text-emerald-400 font-extrabold">{getFriendlyCronText(form.cron)}</span>
+                </span>
               </label>
               <input 
                 type="text" 

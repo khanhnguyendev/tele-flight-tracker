@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, Spinner } from '@heroui/react';
 import { Plane, Calendar, Cpu, Bell, ArrowDownRight, ArrowUpRight, Minus, RefreshCw } from 'lucide-react';
-import { Settings } from '@/services/settingsDb';
+import { Settings } from '@/services/schemas';
 import { HistoryPoint } from '@/services/historyDb';
+import { getFriendlyCronText } from '@/services/cronFormatter';
 
 interface StatsGridProps {
   settings: Settings;
@@ -83,21 +84,24 @@ export default function StatsGrid({ settings, history, cheapestPrice }: StatsGri
         </CardContent>
       </Card>
 
-      {/* 2. Route & Dates Card */}
-      <Card className="glass-card">
+      {/* 2. Route & Dates Card (Highlighted with premium visual attention) */}
+      <Card className="glass-card border-indigo-500/25 hover:border-indigo-400/50 shadow-lg shadow-indigo-500/5 bg-gradient-to-br from-indigo-950/20 to-slate-950/50 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-emerald-400 rounded-full m-3 pulse-indicator" />
         <CardContent className="p-5 flex flex-row items-center justify-between">
           <div>
-            <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">Flight Route & Dates</p>
-            <h3 className="text-lg font-bold mt-1 text-gray-100 flex items-center gap-1.5">
-              {settings.origin} <Plane className="w-4 h-4 text-emerald-400 rotate-90" /> {settings.destination}
+            <p className="text-[10px] text-indigo-300 font-extrabold uppercase tracking-widest">Core Route Tracked</p>
+            <h3 className="text-2xl font-black mt-1 text-gray-100 flex items-center gap-2">
+              {settings.origin} 
+              <Plane className="w-5 h-5 text-indigo-400 rotate-90 animate-pulse" /> 
+              {settings.destination}
             </h3>
-            <p className="text-xs text-gray-400 mt-2 font-semibold flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5 text-emerald-400" />
+            <p className="text-xs text-gray-300 mt-2.5 font-bold flex items-center gap-1">
+              <Calendar className="w-3.5 h-3.5 text-indigo-400" />
               {settings.outboundDate} to {settings.returnDate}
             </p>
           </div>
-          <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-400">
-            <Plane className="w-6 h-6" />
+          <div className="w-12 h-12 bg-indigo-500/15 rounded-xl flex items-center justify-center text-indigo-400 shadow-inner">
+            <Plane className="w-6 h-6 rotate-45" />
           </div>
         </CardContent>
       </Card>
@@ -107,10 +111,11 @@ export default function StatsGrid({ settings, history, cheapestPrice }: StatsGri
         <CardContent className="p-5 flex flex-row items-center justify-between">
           <div className="flex-1 mr-2">
             <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">Scanning Schedule</p>
-            <h3 className="text-sm font-bold mt-1 text-gray-100 font-mono truncate">
-              {settings.cron}
+            <h3 className="text-base font-bold mt-1 text-gray-100 truncate">
+              {getFriendlyCronText(settings.cron)}
             </h3>
-            <div className="mt-2">
+            <p className="text-[10px] text-gray-500 font-mono mt-1 font-semibold">{settings.cron}</p>
+            <div className="mt-2.5">
               <button
                 className="inline-flex items-center justify-center gap-1.5 h-8 font-semibold px-3 text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 rounded-xl text-xs transition-all cursor-pointer disabled:opacity-50"
                 onClick={handleScanNow}
