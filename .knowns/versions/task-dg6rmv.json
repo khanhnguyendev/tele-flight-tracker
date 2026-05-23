@@ -1,6 +1,6 @@
 {
   "taskId": "dg6rmv",
-  "currentVersion": 1,
+  "currentVersion": 3,
   "versions": [
     {
       "id": "v1",
@@ -23,6 +23,44 @@
         "description": "Create src/services/telegram.ts to format complex HTML message reports, ASCII price trend bars, countdowns, and post Telegram alerts.",
         "priority": "medium",
         "status": "todo",
+        "title": "Implement Telegram Bot API client and message formatter"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "dg6rmv",
+      "version": 2,
+      "timestamp": "2026-05-23T16:44:37.633673Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        }
+      ],
+      "snapshot": {
+        "description": "Create src/services/telegram.ts to format complex HTML message reports, ASCII price trend bars, countdowns, and post Telegram alerts.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Implement Telegram Bot API client and message formatter"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "dg6rmv",
+      "version": 3,
+      "timestamp": "2026-05-23T16:44:54.251987Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "description": "Create src/services/telegram.ts to format complex HTML message reports, ASCII price trend bars, countdowns, and post Telegram alerts.",
+        "priority": "medium",
+        "status": "done",
         "title": "Implement Telegram Bot API client and message formatter"
       }
     }

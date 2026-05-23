@@ -1,12 +1,12 @@
 ---
 id: dg6rmv
 title: Implement Telegram Bot API client and message formatter
-status: todo
+status: done
 priority: medium
 labels: []
 createdAt: '2026-05-23T16:15:40.681Z'
-updatedAt: '2026-05-23T16:15:40.681Z'
-timeSpent: 0
+updatedAt: '2026-05-23T16:44:54.250Z'
+timeSpent: 16
 parent: qbpiqp
 ---
 # Implement Telegram Bot API client and message formatter
