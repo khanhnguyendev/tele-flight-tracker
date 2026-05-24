@@ -108,7 +108,10 @@ export default function StatsGrid({ settings, history, cheapestPrice, loading, o
       <Card className="glass-card">
         <CardContent className="p-5 flex flex-row items-center justify-between">
           <div>
-            <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">Cheapest Price</p>
+            <p className="text-[10px] text-emerald-400/90 font-extrabold uppercase tracking-widest flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#10b981]" />
+              Cheapest Price
+            </p>
             <h3 className="text-2xl font-bold mt-1 text-emerald-400">{formattedCheapest}</h3>
             {delta !== null ? (
               <div className="flex items-center mt-2">
@@ -141,10 +144,12 @@ export default function StatsGrid({ settings, history, cheapestPrice, loading, o
 
       {/* 2. Route & Dates Card (Highlighted with premium visual attention) */}
       <Card className="glass-card border-indigo-500/25 hover:border-indigo-400/50 shadow-lg shadow-indigo-500/5 bg-gradient-to-br from-indigo-950/20 to-slate-950/50 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-emerald-400 rounded-full m-3 pulse-indicator" />
         <CardContent className="p-5 flex flex-row items-center justify-between">
           <div className="w-full">
-            <p className="text-[10px] text-indigo-300 font-extrabold uppercase tracking-widest">Flight Route & Dates</p>
+            <p className="text-[10px] text-indigo-300/95 font-extrabold uppercase tracking-widest flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse shadow-[0_0_8px_#6366f1]" />
+              Flight Route & Dates
+            </p>
             <h3 className="text-2xl font-black mt-1 text-gray-100 flex items-center gap-2">
               {settings.origin} 
               <Plane className="w-5 h-5 text-indigo-400 rotate-90 animate-pulse" /> 
@@ -207,7 +212,10 @@ export default function StatsGrid({ settings, history, cheapestPrice, loading, o
         )}
         <CardContent className="p-5 flex flex-row items-center justify-between">
           <div className="flex-1 mr-2">
-            <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">On-Demand Scanner</p>
+            <p className="text-[10px] text-amber-400/90 font-extrabold uppercase tracking-widest flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#f59e0b]" />
+              On-Demand Scanner
+            </p>
             <h3 className="text-base font-bold mt-1 text-gray-100 truncate">
               Manual Ticket Sync
             </h3>
