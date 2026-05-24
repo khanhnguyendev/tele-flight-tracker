@@ -333,10 +333,11 @@ export default function FlightList({ offers, currency, loading, settings }: Flig
                                   <span className="w-1 h-1 rounded-full bg-emerald-400" />
                                 </div>
                                 <div>
-                                  <p className="text-xs font-bold text-gray-100 flex items-center gap-1.5">
-                                    {offer.outbound.departureTime.split(' ')[1] || offer.outbound.departureTime}
+                                  <p className="text-xs font-bold text-gray-100 flex flex-wrap items-center gap-1.5">
+                                    <span className="text-emerald-400">{offer.outbound.departureTime.split(' ')[1] || offer.outbound.departureTime}</span>
+                                    <span className="text-[10px] text-gray-400 font-medium">({formatLongDate(offer.outbound.departureTime)})</span>
                                     <span className="text-[10px] text-gray-500 font-semibold">•</span>
-                                    {getAirportName(originCode)} ({originCode})
+                                    <span>{getAirportName(originCode)} ({originCode})</span>
                                   </p>
                                   <p className="text-[10px] text-gray-400 mt-0.5">Departure airport terminal</p>
                                 </div>
@@ -354,15 +355,16 @@ export default function FlightList({ offers, currency, loading, settings }: Flig
                                   <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
                                 </div>
                                 <div>
-                                  <p className="text-xs font-bold text-gray-100 flex items-center gap-1.5">
-                                    {offer.outbound.arrivalTime.split(' ')[1] || offer.outbound.arrivalTime}
+                                  <p className="text-xs font-bold text-gray-100 flex flex-wrap items-center gap-1.5">
+                                    <span className="text-emerald-400">{offer.outbound.arrivalTime.split(' ')[1] || offer.outbound.arrivalTime}</span>
+                                    <span className="text-[10px] text-gray-400 font-medium">({formatLongDate(offer.outbound.arrivalTime)})</span>
                                     {getDayOffset(offer.outbound.departureTime, offer.outbound.arrivalTime) && (
                                       <span className="text-[10px] text-emerald-400 font-black relative top-[-4px]">
                                         {getDayOffset(offer.outbound.departureTime, offer.outbound.arrivalTime)}
                                       </span>
                                     )}
                                     <span className="text-[10px] text-gray-500 font-semibold">•</span>
-                                    {getAirportName(destCode)} ({destCode})
+                                    <span>{getAirportName(destCode)} ({destCode})</span>
                                   </p>
                                   <p className="text-[10px] text-gray-400 mt-0.5">Arrival destination airport</p>
                                 </div>
@@ -433,10 +435,11 @@ export default function FlightList({ offers, currency, loading, settings }: Flig
                                   <span className="w-1 h-1 rounded-full bg-indigo-400" />
                                 </div>
                                 <div>
-                                  <p className="text-xs font-bold text-gray-100 flex items-center gap-1.5">
-                                    {offer.inbound.departureTime.split(' ')[1] || offer.inbound.departureTime}
+                                  <p className="text-xs font-bold text-gray-100 flex flex-wrap items-center gap-1.5">
+                                    <span className="text-indigo-400">{offer.inbound.departureTime.split(' ')[1] || offer.inbound.departureTime}</span>
+                                    <span className="text-[10px] text-gray-400 font-medium">({formatLongDate(offer.inbound.departureTime)})</span>
                                     <span className="text-[10px] text-gray-500 font-semibold">•</span>
-                                    {getAirportName(destCode)} ({destCode})
+                                    <span>{getAirportName(destCode)} ({destCode})</span>
                                   </p>
                                   <p className="text-[10px] text-gray-400 mt-0.5">Departure airport terminal</p>
                                 </div>
@@ -454,15 +457,16 @@ export default function FlightList({ offers, currency, loading, settings }: Flig
                                   <span className="w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
                                 </div>
                                 <div>
-                                  <p className="text-xs font-bold text-gray-100 flex items-center gap-1.5">
-                                    {offer.inbound.arrivalTime.split(' ')[1] || offer.inbound.arrivalTime}
+                                  <p className="text-xs font-bold text-gray-100 flex flex-wrap items-center gap-1.5">
+                                    <span className="text-indigo-400">{offer.inbound.arrivalTime.split(' ')[1] || offer.inbound.arrivalTime}</span>
+                                    <span className="text-[10px] text-gray-400 font-medium">({formatLongDate(offer.inbound.arrivalTime)})</span>
                                     {getDayOffset(offer.inbound.departureTime, offer.inbound.arrivalTime) && (
                                       <span className="text-[10px] text-indigo-400 font-black relative top-[-4px]">
                                         {getDayOffset(offer.inbound.departureTime, offer.inbound.arrivalTime)}
                                       </span>
                                     )}
                                     <span className="text-[10px] text-gray-500 font-semibold">•</span>
-                                    {getAirportName(originCode)} ({originCode})
+                                    <span>{getAirportName(originCode)} ({originCode})</span>
                                   </p>
                                   <p className="text-[10px] text-gray-400 mt-0.5">Arrival destination airport</p>
                                 </div>

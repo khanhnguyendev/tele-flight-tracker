@@ -116,13 +116,18 @@ export async function searchSerpapiFlights(
 
 function extractCarrierCode(airline: string): string {
   const map: Record<string, string> = {
-    'vietnam airlines': 'VN',
-    'vietjet air': 'VJ',
+    'vietnam': 'VN',
+    'vietjet': 'VJ',
+    'spring': '9C',
     'china southern': 'CZ',
-    'shenzhen airlines': 'ZH',
-    'bamboo airways': 'QH',
+    'shenzhen': 'ZH',
+    'bamboo': 'QH',
     'air china': 'CA',
-    'china eastern': 'MU'
+    'china eastern': 'MU',
+    'cathay': 'CX',
+    'korean': 'KE',
+    'singapore': 'SQ',
+    'thai': 'TG'
   };
   const clean = airline.toLowerCase().trim();
   for (const key in map) {
