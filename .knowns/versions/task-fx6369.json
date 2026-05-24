@@ -1,0 +1,75 @@
+{
+  "taskId": "fx6369",
+  "currentVersion": 3,
+  "versions": [
+    {
+      "id": "v1",
+      "taskId": "fx6369",
+      "version": 1,
+      "timestamp": "2026-05-24T09:27:56.06372Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": null,
+          "newValue": "todo"
+        },
+        {
+          "field": "priority",
+          "oldValue": null,
+          "newValue": "high"
+        }
+      ],
+      "snapshot": {
+        "description": "Make each card in the flight offers list expandable with smooth animations, displaying full timelines (departure/arrival airports, times, travel duration), and a rich features block including legroom, carbon emissions, and contrail warming potential.",
+        "priority": "high",
+        "status": "todo",
+        "title": "Implement expandable premium accordion details for flight offers"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "fx6369",
+      "version": 2,
+      "timestamp": "2026-05-24T09:27:58.767626Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        },
+        {
+          "field": "assignee",
+          "oldValue": null,
+          "newValue": "@me"
+        }
+      ],
+      "snapshot": {
+        "assignee": "@me",
+        "description": "Make each card in the flight offers list expandable with smooth animations, displaying full timelines (departure/arrival airports, times, travel duration), and a rich features block including legroom, carbon emissions, and contrail warming potential.",
+        "priority": "high",
+        "status": "in-progress",
+        "title": "Implement expandable premium accordion details for flight offers"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "fx6369",
+      "version": 3,
+      "timestamp": "2026-05-24T09:29:09.608458Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "assignee": "@me",
+        "description": "Make each card in the flight offers list expandable with smooth animations, displaying full timelines (departure/arrival airports, times, travel duration), and a rich features block including legroom, carbon emissions, and contrail warming potential.",
+        "priority": "high",
+        "status": "done",
+        "title": "Implement expandable premium accordion details for flight offers"
+      }
+    }
+  ]
+}

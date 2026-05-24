@@ -55,7 +55,7 @@ export default function DashboardContainer({ settings, history, offers }: Dashbo
         <TrendChart history={history} loading={isScanning} />
 
         {/* Carrier accordion cards list */}
-        <FlightList offers={offers} currency={settings.currency} loading={isScanning} />
+        <FlightList offers={offers} currency={settings.currency} loading={isScanning} settings={settings} />
       </div>
     </div>
   );
