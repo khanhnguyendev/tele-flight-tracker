@@ -192,29 +192,8 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
               />
             </div>
 
-            {/* Row 4: Background Cron */}
-            <div className="space-y-2">
-              <label className="text-xs text-gray-400 font-bold uppercase tracking-wider block">
-                <span className="flex items-center gap-1.5 mb-1">
-                  <Bell className="w-3.5 h-3.5 text-emerald-400" /> Background Track Interval
-                </span>
-                <span className="text-[10px] text-gray-500 font-semibold lowercase normal-case tracking-normal block mt-1">
-                  Parsed: <span className="text-emerald-400 font-extrabold">{getFriendlyCronText(form.cron)}</span>
-                </span>
-              </label>
-              <input 
-                type="text" 
-                name="cron" 
-                value={form.cron}
-                onChange={handleInputChange}
-                required
-                placeholder="e.g. 0 */6 * * *"
-                className="w-full bg-slate-900/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:border-emerald-500 transition-all font-mono"
-              />
-              <p className="text-[10px] text-gray-500 font-semibold leading-relaxed mt-1.5">
-                Standard 5-field cron syntax: <code>minute hour day-of-month month day-of-week</code>. Default <code>0 */6 * * *</code> executes price updates every 6 hours.
-              </p>
-            </div>
+            {/* Row 4: Background Cron (Hidden to preserve settings flow) */}
+            <input type="hidden" name="cron" value={form.cron} />
 
           </CardContent>
         </Card>

@@ -200,11 +200,11 @@ export default function StatsGrid({ settings, history, cheapestPrice }: StatsGri
       <Card className="glass-card">
         <CardContent className="p-5 flex flex-row items-center justify-between">
           <div className="flex-1 mr-2">
-            <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">Scanning Schedule</p>
+            <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">On-Demand Scanner</p>
             <h3 className="text-base font-bold mt-1 text-gray-100 truncate">
-              {getFriendlyCronText(settings.cron)}
+              Manual Ticket Sync
             </h3>
-            <p className="text-[10px] text-gray-500 font-mono mt-1 font-semibold">{settings.cron}</p>
+            <p className="text-[10px] text-gray-500 font-medium mt-1">Trigger live price updates instantly</p>
             <div className="mt-2.5">
               <button
                 className="inline-flex items-center justify-center gap-1.5 h-8 font-semibold px-3 text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 rounded-xl text-xs transition-all cursor-pointer disabled:opacity-50"

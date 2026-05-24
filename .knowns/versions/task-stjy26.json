@@ -1,0 +1,75 @@
+{
+  "taskId": "stjy26",
+  "currentVersion": 3,
+  "versions": [
+    {
+      "id": "v1",
+      "taskId": "stjy26",
+      "version": 1,
+      "timestamp": "2026-05-24T05:57:05.676123Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": null,
+          "newValue": "todo"
+        },
+        {
+          "field": "priority",
+          "oldValue": null,
+          "newValue": "medium"
+        }
+      ],
+      "snapshot": {
+        "description": "Remove the cron/scanning schedule text display from the Dashboard Stats grid and hide the schedule input field in the settings panel using hidden inputs to preserve data flows.",
+        "priority": "medium",
+        "status": "todo",
+        "title": "Remove scanning schedule display on Stats and settings"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "stjy26",
+      "version": 2,
+      "timestamp": "2026-05-24T05:57:10.457925Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        },
+        {
+          "field": "assignee",
+          "oldValue": null,
+          "newValue": "@me"
+        }
+      ],
+      "snapshot": {
+        "assignee": "@me",
+        "description": "Remove the cron/scanning schedule text display from the Dashboard Stats grid and hide the schedule input field in the settings panel using hidden inputs to preserve data flows.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Remove scanning schedule display on Stats and settings"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "stjy26",
+      "version": 3,
+      "timestamp": "2026-05-24T05:58:15.156718Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "assignee": "@me",
+        "description": "Remove the cron/scanning schedule text display from the Dashboard Stats grid and hide the schedule input field in the settings panel using hidden inputs to preserve data flows.",
+        "priority": "medium",
+        "status": "done",
+        "title": "Remove scanning schedule display on Stats and settings"
+      }
+    }
+  ]
+}
