@@ -6,7 +6,7 @@ import { ArrowLeft, Sliders } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 
 export default async function SettingsPage() {
-  const settings = getSettings();
+  const settings = await getSettings();
 
   return (
     <div className="flex-1 w-full max-w-4xl mx-auto px-4 py-8 md:py-12 z-10 relative">

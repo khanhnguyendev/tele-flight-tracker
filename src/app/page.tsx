@@ -12,8 +12,8 @@ import { Settings, Sliders } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 
 export default async function DashboardPage() {
-  const settings = getSettings();
-  const history = getHistory();
+  const settings = await getSettings();
+  const history = await getHistory();
   
   // Perform active engine flight search
   const offers = await searchFlights(settings);

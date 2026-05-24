@@ -1,0 +1,75 @@
+{
+  "taskId": "egpm46",
+  "currentVersion": 3,
+  "versions": [
+    {
+      "id": "v1",
+      "taskId": "egpm46",
+      "version": 1,
+      "timestamp": "2026-05-23T17:13:09.033159Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": null,
+          "newValue": "todo"
+        },
+        {
+          "field": "priority",
+          "oldValue": null,
+          "newValue": "high"
+        }
+      ],
+      "snapshot": {
+        "description": "Fully refactor the file system storage layer to stateless MongoDB Atlas cloud database to support Vercel serverless deployment.",
+        "priority": "high",
+        "status": "todo",
+        "title": "Migrate file-based settings and history database to MongoDB Atlas"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "egpm46",
+      "version": 2,
+      "timestamp": "2026-05-23T17:13:19.624867Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        },
+        {
+          "field": "assignee",
+          "oldValue": null,
+          "newValue": "@me"
+        }
+      ],
+      "snapshot": {
+        "assignee": "@me",
+        "description": "Fully refactor the file system storage layer to stateless MongoDB Atlas cloud database to support Vercel serverless deployment.",
+        "priority": "high",
+        "status": "in-progress",
+        "title": "Migrate file-based settings and history database to MongoDB Atlas"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "egpm46",
+      "version": 3,
+      "timestamp": "2026-05-23T17:16:08.696785Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "assignee": "@me",
+        "description": "Fully refactor the file system storage layer to stateless MongoDB Atlas cloud database to support Vercel serverless deployment.",
+        "priority": "high",
+        "status": "done",
+        "title": "Migrate file-based settings and history database to MongoDB Atlas"
+      }
+    }
+  ]
+}

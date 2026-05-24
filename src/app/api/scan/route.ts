@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
     const reload = searchParams.get('reload') === 'true';
 
     // Lazy load and guarantee the background cron daemon is initialized
-    initCron(reload);
+    await initCron(reload);
 
     if (reload) {
       return NextResponse.json({
@@ -25,13 +25,13 @@ export async function GET(req: NextRequest) {
     }
 
     console.log('GET /api/scan: Starting manual flight price scan...');
-    const settings = getSettings();
+    const settings = await getSettings();
     const offers = await searchFlights(settings);
     const cheapest = offers[0] || null;
 
-    let history = getHistory();
+    let history = await getHistory();
     if (cheapest) {
-      history = addHistoryPoint({
+      history = await addHistoryPoint({
         cheapestPrice: cheapest.price,
         currency: settings.currency,
         engine: settings.engine,

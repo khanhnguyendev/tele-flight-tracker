@@ -1,59 +1,40 @@
-import fs from 'fs';
-import path from 'path';
+import clientPromise from './mongodb';
 
 export interface HistoryPoint {
-  timestamp: string;     // ISO String or 'DD/MM HH:mm'
+  timestamp: string;     // 'DD/MM HH:mm'
   cheapestPrice: number; // in currency units (e.g., VND)
   currency: string;
   engine: string;
   route: string;
   carrierName: string;
-}
-
-const DATA_DIR = path.join(process.cwd(), 'data');
-const HISTORY_FILE = path.join(DATA_DIR, 'history.json');
-
-/**
- * Ensures that the data directory exists.
- */
-function ensureDataDir() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
-  }
+  createdAt?: Date;      // Useful for sorting
 }
 
 /**
- * Reads price scan history from history.json.
+ * Reads price scan history from the history collection.
  */
-export function getHistory(): HistoryPoint[] {
-  ensureDataDir();
+export async function getHistory(): Promise<HistoryPoint[]> {
   try {
-    if (!fs.existsSync(HISTORY_FILE)) {
-      return [];
-    }
-    const data = fs.readFileSync(HISTORY_FILE, 'utf8');
-    const parsed = JSON.parse(data);
-    if (Array.isArray(parsed)) {
-      return parsed;
-    }
-    return [];
+    const client = await clientPromise;
+    const db = client.db('tele-flight');
+    const docs = await db.collection('history').find({}).sort({ createdAt: 1 }).toArray();
+    return docs.map(({ _id, ...rest }) => rest as HistoryPoint);
   } catch (error) {
-    console.error('Error reading history, returning empty list:', error);
+    console.error('Error reading history from MongoDB, returning empty list:', error);
     return [];
   }
 }
 
 /**
- * Adds a new scan point to history, capping the size to the last 10 scans.
+ * Adds a new scan point to history, capping the collection size to the last 10 scans.
  */
-export function addHistoryPoint(point: Omit<HistoryPoint, 'timestamp'>): HistoryPoint[] {
-  ensureDataDir();
+export async function addHistoryPoint(point: Omit<HistoryPoint, 'timestamp'>): Promise<HistoryPoint[]> {
   try {
-    const history = getHistory();
+    const client = await clientPromise;
+    const db = client.db('tele-flight');
     
-    // Format timestamp as DD/MM HH:mm in ICT time (GMT+7) or local server time
+    // Format timestamp as DD/MM HH:mm in ICT time (GMT+7)
     const now = new Date();
-    // Adjust to ICT timezone (GMT+7)
     const ictTime = new Date(now.getTime() + (7 * 60 * 60 * 1000) + (now.getTimezoneOffset() * 60 * 1000));
     
     const day = String(ictTime.getDate()).padStart(2, '0');
@@ -64,18 +45,37 @@ export function addHistoryPoint(point: Omit<HistoryPoint, 'timestamp'>): History
 
     const newPoint: HistoryPoint = {
       ...point,
-      timestamp: timestampStr
+      timestamp: timestampStr,
+      createdAt: now
     };
 
-    history.push(newPoint);
+    // Insert the new point
+    await db.collection('history').insertOne(newPoint);
 
-    // Cap the list to the last 10 points
-    const cappedHistory = history.slice(-10);
+    // Fetch history and sort by oldest first
+    let history = await getHistory();
 
-    fs.writeFileSync(HISTORY_FILE, JSON.stringify(cappedHistory, null, 2), 'utf8');
-    return cappedHistory;
+    // If history has more than 10 items, remove the oldest documents
+    if (history.length > 10) {
+      // Find how many documents to delete
+      const deleteCount = history.length - 10;
+      // Get the oldest documents to delete
+      const docsToDelete = await db.collection('history')
+        .find({})
+        .sort({ createdAt: 1 })
+        .limit(deleteCount)
+        .toArray();
+      
+      const idsToDelete = docsToDelete.map(doc => doc._id);
+      await db.collection('history').deleteMany({ _id: { $in: idsToDelete } });
+      
+      // Re-fetch clean history
+      history = await getHistory();
+    }
+
+    return history;
   } catch (error) {
-    console.error('Error adding history point:', error);
+    console.error('Error adding history point to MongoDB:', error);
     throw error;
   }
 }
@@ -83,12 +83,13 @@ export function addHistoryPoint(point: Omit<HistoryPoint, 'timestamp'>): History
 /**
  * Clears all scan history.
  */
-export function clearHistory(): void {
-  ensureDataDir();
+export async function clearHistory(): Promise<void> {
   try {
-    fs.writeFileSync(HISTORY_FILE, JSON.stringify([], null, 2), 'utf8');
+    const client = await clientPromise;
+    const db = client.db('tele-flight');
+    await db.collection('history').deleteMany({});
   } catch (error) {
-    console.error('Error clearing history:', error);
+    console.error('Error clearing history in MongoDB:', error);
     throw error;
   }
 }

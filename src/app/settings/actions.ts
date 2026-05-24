@@ -26,11 +26,11 @@ export async function saveSettingsAction(formData: FormData) {
       throw new Error('Return date must be on or after the departure outbound date.');
     }
 
-    // 2. Persist to settings.json
-    writeSettings(validated);
+    // 2. Persist to settings
+    await writeSettings(validated);
 
     // 3. Dynamically reschedule the in-process cron daemon
-    initCron(true);
+    await initCron(true);
 
   } catch (error: any) {
     console.error('Validation failed saving settings:', error);

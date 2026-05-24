@@ -26,8 +26,8 @@ You can use the following commands to configure and trigger flight scans:
  */
 export async function GET() {
   try {
-    const settings = getSettings();
-    const history = getHistory();
+    const settings = await getSettings();
+    const history = await getHistory();
     const countdown = getCountdown(settings.outboundDate);
 
     return NextResponse.json({
@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
     const command = tokens[0].toLowerCase();
     const args = tokens.slice(1);
 
-    const settings = getSettings();
+    const settings = await getSettings();
 
     if (command === '/help') {
       await sendTelegramMessage(HELP_MESSAGE);
@@ -107,9 +107,9 @@ export async function POST(req: NextRequest) {
       const offers = await searchFlights(settings);
       const cheapest = offers[0] || null;
       
-      let history = getHistory();
+      let history = await getHistory();
       if (cheapest) {
-        history = addHistoryPoint({
+        history = await addHistoryPoint({
           cheapestPrice: cheapest.price,
           currency: settings.currency,
           engine: settings.engine,
@@ -130,7 +130,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ ok: true });
       }
 
-      const updated = writeSettings({ origin: originArg });
+      const updated = await writeSettings({ origin: originArg });
       await sendTelegramMessage(`✅ <b>Origin Updated:</b> Flight route set to: <b>${updated.origin}</b> ⇄ <b>${updated.destination}</b>`);
       return NextResponse.json({ ok: true });
     }
@@ -142,7 +142,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ ok: true });
       }
 
-      const updated = writeSettings({ destination: destArg });
+      const updated = await writeSettings({ destination: destArg });
       await sendTelegramMessage(`✅ <b>Destination Updated:</b> Flight route set to: <b>${updated.origin}</b> ⇄ <b>${updated.destination}</b>`);
       return NextResponse.json({ ok: true });
     }
@@ -158,7 +158,7 @@ export async function POST(req: NextRequest) {
       }
 
       try {
-        const updated = writeSettings({ outboundDate: outbound, returnDate: returnDt });
+        const updated = await writeSettings({ outboundDate: outbound, returnDate: returnDt });
         await sendTelegramMessage(`✅ <b>Travel Dates Updated:</b>\n• Outbound: <code>${updated.outboundDate}</code>\n• Return: <code>${updated.returnDate}</code>`);
       } catch (err: any) {
         await sendTelegramMessage(`❌ <b>Validation Failed:</b> ${err.message}`);
@@ -174,7 +174,7 @@ export async function POST(req: NextRequest) {
       }
 
       try {
-        const updated = writeSettings({ cron: cronExpression });
+        const updated = await writeSettings({ cron: cronExpression });
         
         // Notify of update (dynamic reloading will read settings.json)
         await sendTelegramMessage(`✅ <b>Tracking Interval Updated:</b> Cron schedule set to <code>${updated.cron}</code>.\n<i>Background cron daemon rescheduled!</i>`);

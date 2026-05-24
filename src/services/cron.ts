@@ -11,8 +11,8 @@ const globalCron = global as any;
 /**
  * Initializes or reschedules the background cron tracking daemon in-process.
  */
-export function initCron(forceReload = false): void {
-  const settings = getSettings();
+export async function initCron(forceReload = false): Promise<void> {
+  const settings = await getSettings();
   const targetCron = settings.cron;
 
   if (globalCron.activeCronJob && globalCron.activeCronStr === targetCron && !forceReload) {
@@ -36,13 +36,13 @@ export function initCron(forceReload = false): void {
   globalCron.activeCronJob = cron.schedule(targetCron, async () => {
     console.log('🕒 [Cron Daemon] Background scheduled flight scan triggered...');
     try {
-      const currentSettings = getSettings();
+      const currentSettings = await getSettings();
       const offers = await searchFlights(currentSettings);
       const cheapest = offers[0] || null;
 
-      let history = getHistory();
+      let history = await getHistory();
       if (cheapest) {
-        history = addHistoryPoint({
+        history = await addHistoryPoint({
           cheapestPrice: cheapest.price,
           currency: currentSettings.currency,
           engine: currentSettings.engine,
