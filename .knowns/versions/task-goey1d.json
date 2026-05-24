@@ -1,0 +1,75 @@
+{
+  "taskId": "goey1d",
+  "currentVersion": 3,
+  "versions": [
+    {
+      "id": "v1",
+      "taskId": "goey1d",
+      "version": 1,
+      "timestamp": "2026-05-24T06:18:02.93807Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": null,
+          "newValue": "todo"
+        },
+        {
+          "field": "priority",
+          "oldValue": null,
+          "newValue": "medium"
+        }
+      ],
+      "snapshot": {
+        "description": "Refactor TrendChart.tsx and FlightList.tsx to incorporate smooth, sweeping ease-out line graph loading and staggered framer-motion entry fade-ins with glowing card elevations.",
+        "priority": "medium",
+        "status": "todo",
+        "title": "Add premium animations to Trend Chart and Offers List"
+      }
+    },
+    {
+      "id": "v2",
+      "taskId": "goey1d",
+      "version": 2,
+      "timestamp": "2026-05-24T06:18:08.786968Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "todo",
+          "newValue": "in-progress"
+        },
+        {
+          "field": "assignee",
+          "oldValue": null,
+          "newValue": "@me"
+        }
+      ],
+      "snapshot": {
+        "assignee": "@me",
+        "description": "Refactor TrendChart.tsx and FlightList.tsx to incorporate smooth, sweeping ease-out line graph loading and staggered framer-motion entry fade-ins with glowing card elevations.",
+        "priority": "medium",
+        "status": "in-progress",
+        "title": "Add premium animations to Trend Chart and Offers List"
+      }
+    },
+    {
+      "id": "v3",
+      "taskId": "goey1d",
+      "version": 3,
+      "timestamp": "2026-05-24T06:19:17.830139Z",
+      "changes": [
+        {
+          "field": "status",
+          "oldValue": "in-progress",
+          "newValue": "done"
+        }
+      ],
+      "snapshot": {
+        "assignee": "@me",
+        "description": "Refactor TrendChart.tsx and FlightList.tsx to incorporate smooth, sweeping ease-out line graph loading and staggered framer-motion entry fade-ins with glowing card elevations.",
+        "priority": "medium",
+        "status": "done",
+        "title": "Add premium animations to Trend Chart and Offers List"
+      }
+    }
+  ]
+}

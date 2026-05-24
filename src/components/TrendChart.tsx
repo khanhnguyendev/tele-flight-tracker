@@ -59,6 +59,10 @@ export default function TrendChart({ history }: TrendChartProps) {
         ]
       },
       options: {
+        animation: {
+          duration: 1500,
+          easing: 'easeOutQuart'
+        },
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
