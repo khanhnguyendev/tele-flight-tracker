@@ -44,8 +44,19 @@ function getAirportName(code: string): string {
 
 function formatLongDate(dateStr: string): string {
   try {
-    const cleanStr = dateStr.replace(' ', 'T');
+    const cleanStr = dateStr.replace(' ', 'T').replace('--:--', '00:00');
     const d = new Date(cleanStr.includes('T') ? cleanStr + ':00' : cleanStr + 'T00:00:00');
+    if (isNaN(d.getTime())) {
+      // Fallback: try parsing just the date part (YYYY-MM-DD)
+      const datePart = dateStr.split(' ')[0];
+      const fallbackDate = new Date(datePart + 'T00:00:00');
+      if (!isNaN(fallbackDate.getTime())) {
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return `${days[fallbackDate.getDay()]}, ${months[fallbackDate.getMonth()]} ${fallbackDate.getDate()}`;
+      }
+      return dateStr;
+    }
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}`;
@@ -96,7 +107,7 @@ function getDeterministicFlightDetails(offerId: string, segment: 'out' | 'in', c
 
 function CarrierLogo({ code, name }: { code: string; name: string }) {
   const [failed, setFailed] = useState(false);
-  const logoUrl = `https://pics.avs.io/al_covers/64/64/${code.toUpperCase()}.png`;
+  const logoUrl = `https://pics.avs.io/200/200/${code.toUpperCase()}.png`;
 
   if (failed) {
     return (
