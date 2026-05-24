@@ -196,8 +196,26 @@ export default function StatsGrid({ settings, history, cheapestPrice }: StatsGri
         </CardContent>
       </Card>
 
-      {/* 4. Auto-Scan Schedule Card */}
-      <Card className="glass-card">
+      {/* 4. On-Demand Scanner Card */}
+      <Card className="glass-card relative overflow-hidden">
+        {loading && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/85 backdrop-blur-md z-20 border border-emerald-500/20 rounded-2xl animate-fade-in transition-all duration-300">
+            {/* Spinning Radar Circle */}
+            <div className="relative w-12 h-12 flex items-center justify-center">
+              <span className="absolute inset-0 w-full h-full rounded-full border border-emerald-500/10" />
+              <span className="absolute inset-0 w-full h-full rounded-full border-t-2 border-emerald-400 animate-spin" />
+              <Plane className="w-5 h-5 text-emerald-400 animate-pulse rotate-90" />
+            </div>
+            
+            {/* Pulsing Status Text */}
+            <p className="text-[10px] text-emerald-400 font-extrabold uppercase tracking-widest mt-3 animate-pulse">
+              Orchestrating Live Scan...
+            </p>
+            <p className="text-[8px] text-gray-500 font-semibold mt-1">
+              Contacting flight search engines
+            </p>
+          </div>
+        )}
         <CardContent className="p-5 flex flex-row items-center justify-between">
           <div className="flex-1 mr-2">
             <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">On-Demand Scanner</p>
@@ -211,8 +229,8 @@ export default function StatsGrid({ settings, history, cheapestPrice }: StatsGri
                 onClick={handleScanNow}
                 disabled={loading}
               >
-                {loading ? <Spinner size="sm" /> : <RefreshCw className="w-3.5 h-3.5" />}
-                {loading ? 'Scanning...' : 'Scan Now'}
+                <RefreshCw className="w-3.5 h-3.5" />
+                Scan Now
               </button>
             </div>
           </div>
