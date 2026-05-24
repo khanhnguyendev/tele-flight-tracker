@@ -2,12 +2,10 @@ import Link from 'next/link';
 import { getSettings } from '@/services/settingsDb';
 import { getHistory } from '@/services/historyDb';
 import { searchFlights } from '@/services/tracker';
-import StatsGrid from '@/components/StatsGrid';
-import TrendChart from '@/components/TrendChart';
-import FlightList from '@/components/FlightList';
 import CountdownWidget from '@/components/CountdownWidget';
 import DashboardShell from '@/components/DashboardShell';
-import { Settings, Sliders } from 'lucide-react';
+import DashboardContainer from '@/components/DashboardContainer';
+import { Sliders } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -51,21 +49,12 @@ export default async function DashboardPage() {
           </div>
         </header>
 
-        {/* Stats Grid component */}
-        <StatsGrid 
+        {/* Dashboard Coordinator Container */}
+        <DashboardContainer 
           settings={settings}
           history={history}
-          cheapestPrice={cheapestPrice}
+          offers={offers}
         />
-
-        {/* Analytics & Listings */}
-        <div className="grid grid-cols-1 gap-8">
-          {/* Recharts/Chart.js Analytics Line Chart */}
-          <TrendChart history={history} />
-
-          {/* Carrier accordion cards list */}
-          <FlightList offers={offers} currency={settings.currency} />
-        </div>
 
       </DashboardShell>
     </div>

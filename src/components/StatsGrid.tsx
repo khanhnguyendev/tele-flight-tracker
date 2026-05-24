@@ -78,12 +78,11 @@ interface StatsGridProps {
   settings: Settings;
   history: HistoryPoint[];
   cheapestPrice: number;
+  loading: boolean;
+  onScanTrigger: () => void;
 }
 
-export default function StatsGrid({ settings, history, cheapestPrice }: StatsGridProps) {
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
-
+export default function StatsGrid({ settings, history, cheapestPrice, loading, onScanTrigger }: StatsGridProps) {
   // Compute price delta from the last two scans
   const computePriceDelta = () => {
     if (history.length < 2) return null;
@@ -95,18 +94,8 @@ export default function StatsGrid({ settings, history, cheapestPrice }: StatsGri
 
   const delta = computePriceDelta();
 
-  const handleScanNow = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch('/api/scan');
-      if (response.ok) {
-        router.refresh();
-      }
-    } catch (error) {
-      console.error('Error scanning flights:', error);
-    } finally {
-      setLoading(false);
-    }
+  const handleScanNow = () => {
+    onScanTrigger();
   };
 
   const formattedCheapest = cheapestPrice > 0 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Card, CardContent } from '@heroui/react';
+import { Card, CardContent, Spinner } from '@heroui/react';
 import { Chart, LineController, LineElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Filler } from 'chart.js';
 import { HistoryPoint } from '@/services/historyDb';
 
@@ -10,9 +10,10 @@ Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryS
 
 interface TrendChartProps {
   history: HistoryPoint[];
+  loading: boolean;
 }
 
-export default function TrendChart({ history }: TrendChartProps) {
+export default function TrendChart({ history, loading }: TrendChartProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const chartInstanceRef = useRef<Chart | null>(null);
 
@@ -124,7 +125,13 @@ export default function TrendChart({ history }: TrendChartProps) {
   }, [history]);
 
   return (
-    <Card className="glass-card mb-8">
+    <Card className="glass-card mb-8 relative overflow-hidden">
+      {loading && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/70 backdrop-blur-sm z-20 border border-emerald-500/10 rounded-2xl transition-all duration-300">
+          <Spinner size="lg" className="text-emerald-400" />
+          <p className="text-xs text-emerald-400 font-bold uppercase tracking-widest mt-3">Re-plotting price trends...</p>
+        </div>
+      )}
       <CardContent className="p-6">
         <h4 className="text-sm font-bold text-gray-200 uppercase tracking-wider mb-4">Price Trend History</h4>
         

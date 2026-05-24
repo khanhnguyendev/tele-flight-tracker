@@ -1,23 +1,51 @@
 'use client';
 
-import { Card, CardContent, Button } from '@heroui/react';
-import { ArrowRight, Clock, MapPin, ExternalLink, HelpCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Card, CardContent, Button, Spinner } from '@heroui/react';
+import { ArrowRight, Clock, MapPin, ExternalLink, HelpCircle, Plane } from 'lucide-react';
 import { StandardizedOffer } from '@/services/tracker';
 import { motion } from 'framer-motion';
 
 interface FlightListProps {
   offers: StandardizedOffer[];
   currency: string;
+  loading: boolean;
 }
 
-export default function FlightList({ offers, currency }: FlightListProps) {
-  const getCarrierLogoUrl = (code: string) => {
-    // Standard airline logo service or fall back to high quality airline text code badge
-    return `https://pics.avs.io/al_covers/64/64/${code.toUpperCase()}.png`;
-  };
+function CarrierLogo({ code, name }: { code: string; name: string }) {
+  const [failed, setFailed] = useState(false);
+  const logoUrl = `https://pics.avs.io/al_covers/64/64/${code.toUpperCase()}.png`;
+
+  if (failed) {
+    return (
+      <div className="w-14 h-14 bg-indigo-500/10 rounded-xl border border-indigo-500/20 flex items-center justify-center text-indigo-400 flex-shrink-0 shadow-inner">
+        <Plane className="w-6 h-6 rotate-90" />
+      </div>
+    );
+  }
 
   return (
-    <div className="space-y-6">
+    <div className="w-14 h-14 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center p-1.5 overflow-hidden flex-shrink-0">
+      <img 
+        src={logoUrl} 
+        alt={name}
+        onError={() => setFailed(true)}
+        className="object-contain w-full h-full"
+      />
+    </div>
+  );
+}
+
+export default function FlightList({ offers, currency, loading }: FlightListProps) {
+
+  return (
+    <div className="space-y-6 relative overflow-hidden p-1 min-h-[150px] rounded-2xl">
+      {loading && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/70 backdrop-blur-sm z-20 border border-emerald-500/10 rounded-2xl transition-all duration-300">
+          <Spinner size="lg" className="text-emerald-400" />
+          <p className="text-xs text-emerald-400 font-bold uppercase tracking-widest mt-3">Fetching active deals...</p>
+        </div>
+      )}
       <div className="flex items-center justify-between">
         <h4 className="text-sm font-bold text-gray-200 uppercase tracking-wider">Available Carrier Offers ({offers.length})</h4>
         <span className="text-xs bg-emerald-500/10 text-emerald-400 font-semibold px-2.5 py-0.5 rounded-full border border-emerald-500/20">
@@ -58,18 +86,9 @@ export default function FlightList({ offers, currency }: FlightListProps) {
               <Card className="bg-transparent border-0 shadow-none rounded-none">
                 <CardContent className="p-6 flex flex-col lg:flex-row items-center justify-between gap-6">
                   
-                  {/* Airline info & logo */}
+                  {/* Carrier Logo with dynamic local fallback */}
                   <div className="flex items-center gap-4 w-full lg:w-[22%]">
-                    <div className="w-14 h-14 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center p-1.5 overflow-hidden flex-shrink-0">
-                      <img 
-                        src={getCarrierLogoUrl(offer.carrierCode)} 
-                        alt={offer.carrierName}
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = 'https://img.icons8.com/color/48/airplane-take-off.png';
-                        }}
-                        className="object-contain"
-                      />
-                    </div>
+                    <CarrierLogo code={offer.carrierCode} name={offer.carrierName} />
                     <div>
                       <h5 className="font-bold text-gray-100 text-sm leading-tight">{offer.carrierName}</h5>
                       <p className="text-xs text-indigo-400 font-semibold tracking-wider mt-0.5">{offer.carrierCode} Flight</p>
